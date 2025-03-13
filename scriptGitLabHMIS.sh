@@ -12,12 +12,13 @@ echo -e "\nTrying to upgrade system packages." 2>&1 | tee -a logGitLab.log
 echo -e "\nTrying to install GitLab dependencies." 2>&1 | tee -a logGitLab.log
 (sudo apt-get install -y curl openssh-server ca-certificates tzdata perl) 2>&1 | tee -a logGitLab.log
 
-read -p "Do you want to install Postfix? If affirmative, keep in mind that you'll require putting the correct server DNS name in Internet Site option during the wizard. (Y/N): " choice 2>&1 | tee -a logGitLab.log
+echo -e "Do you want to install Postfix? If affirmative, keep in mind that you'll require putting the correct server DNS name in Internet Site option during the wizard. (Y/N): " | tee -a logGitLab.log
+read choice 2>&1
 
 case "$choice" in
-	y|Y ) echo -e "Installing Postfix." 2>&1 | tee -a logGitLab.log; sudo apt-get install -y postfix 2>&1 | tee -a logGitLab.log;
-	n|N) echo -e "Not installing Postfix" 2>&1 | tee -a logGitLab.log;
-	* ) echo -e "Not installing Postfix (You did not entered N/n)" 2>&1 | tee -a logGitLab.log
+	y|Y) echo -e "Installing Postfix." 2>&1 | tee -a logGitLab.log; sudo apt-get install -y postfix 2>&1 | tee -a logGitLab.log ;;
+	n|N) echo -e "Not installing Postfix" 2>&1 | tee -a logGitLab.log ;;
+	*) echo -e "Not installing Postfix (You did not entered N/n)" 2>&1 | tee -a logGitLab.log ;;
 esac
 
 echo -e "\n\nAdding GitLab repository." 2>&1 | tee -a logGitLab.log
