@@ -16,7 +16,7 @@ echo -e "Do you want to install Postfix? If affirmative, keep in mind that you'l
 read choice 2>&1
 
 case "$choice" in
-	y|Y) echo -e "Installing Postfix." 2>&1 | tee -a logGitLab.log; sudo apt-get install -y postfix 2>&1 | tee -a logGitLab.log ;;
+	y|Y) echo -e "Installing Postfix." 2>&1 | tee -a logGitLab.log; sudo apt-get install -y postfix ;;
 	n|N) echo -e "Not installing Postfix" 2>&1 | tee -a logGitLab.log ;;
 	*) echo -e "Not installing Postfix (You did not entered N/n)" 2>&1 | tee -a logGitLab.log ;;
 esac
